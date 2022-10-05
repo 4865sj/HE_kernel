@@ -109,15 +109,15 @@ int main() {
 
 	float time4 = -clock();
 
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_square = cc -> EvalMult(kernel[0][0], kernel[1][1]); //The first element is the square of fraction
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_square = cc -> EvalMult(kernel[0][0], kernel[1][1]); //The first element is the square of denominator
 	time4 += clock();
 	time4 = time4/CLOCKS_PER_SEC;
 	std::cout << "The time of multiplication once time: " << time4 << " s" << std::endl;
 
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator = sqrt(denominator_square, cc); //The first element is fraction
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator = sqrt(denominator_square, cc); //The first element is denominator
 
 	//Inverse of denominator
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_inverse = inverse(denominator, cc); //The first element is the inverse of fraction
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_inverse = inverse(denominator, cc); //The first element is the inverse of denominator
 
 	//Calculate numerator
 	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > numerator = kernel[0][1]; //numerator
