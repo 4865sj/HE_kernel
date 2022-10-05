@@ -103,27 +103,27 @@ int main() {
 	time2 = time2/CLOCKS_PER_SEC;
 	std::cout << "Time of making kernel: " << time2 << " s" << std::endl;
 
-	//Calculate fraction
+	//Calculate denominator
 	
 	float time3 = -clock(); //Measure time of evaluation
 
 	float time4 = -clock();
 
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > fraction_square = cc -> EvalMult(kernel[0][0], kernel[1][1]); //The first element is the square of fraction
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_square = cc -> EvalMult(kernel[0][0], kernel[1][1]); //The first element is the square of fraction
 	time4 += clock();
 	time4 = time4/CLOCKS_PER_SEC;
 	std::cout << "The time of multiplication once time: " << time4 << " s" << std::endl;
 
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > fraction = sqrt(fraction_square, cc); //The first element is fraction
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator = sqrt(denominator_square, cc); //The first element is fraction
 
-	//Inverse of fraction
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > fraction_inverse = inverse(fraction, cc); //The first element is the inverse of fraction
+	//Inverse of denominator
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator_inverse = inverse(denominator, cc); //The first element is the inverse of fraction
 
-	//Calculate denominator
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > denominator = kernel[0][1]; //Denominator
+	//Calculate numerator
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > numerator = kernel[0][1]; //numerator
 
 	//Calculate similarity
-	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > similarity = cc -> EvalMult(fraction_inverse, denominator);
+	Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > similarity = cc -> EvalMult(denominator_inverse, numerator);
 
 	time3 += clock(); //Measure time of evaluation
 	time3 = time3/CLOCKS_PER_SEC;
