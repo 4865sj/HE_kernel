@@ -104,7 +104,7 @@ int main() {
         float time3 = -clock();
         Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > test = cc -> EvalMult(dataset[0], dataset[0]);
 	time3 += clock();
-	time3 = time2/CLOCKS_PER_SEC;
+	time3 = time3/CLOCKS_PER_SEC;
 	std::cout << "The time of multiplication once time: " << time3 << " s" << std::endl;
 
 	//Calculate the square of distance: K(x1, x1) + K(x2, x2) - 2K(x1, x2)
