@@ -3,9 +3,6 @@
 
 using namespace lbcrypto;
 
-Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > >
-sqrt(Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > ctxs, CryptoContext<DCRTPoly> cc);
-
 int main() {
         // Setting
         uint32_t multDepth = 33;
@@ -133,19 +130,3 @@ int main() {
 }
 
 
-Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > >
-sqrt(Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > ctxs, CryptoContext<DCRTPoly> cc) {
-        auto a = ctxs;
-        auto b = cc->EvalSub(ctxs, 1.0);
-
-        for (int i = 0; i<6; i++) {
-                auto b_half = cc -> EvalMult(b, -0.5); // -b/2
-                a = cc->EvalMult(a, cc->EvalAdd(b_half, 1.0)); // a = a*(-b/2 + 1)
-                auto tmp = cc -> EvalSub(b, 3.0); // b-3
-                auto b_quater = cc -> EvalMult(tmp, 0.25); // (b-3)/4
-                auto b_square = cc -> EvalMult(b, b); // b**2
-                b = cc -> EvalMult(b_square, b_quater); // b = (b**2)*((b-3)/4)
-        }
-
-        return a;
-}
