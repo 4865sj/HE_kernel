@@ -44,6 +44,7 @@ int main() {
 	fout.open("lda_kernel.txt");
 
 	for (int d = 4; d < 41; d = d + 4) {
+		cout << "d: " << d << " starts" << end;
         	// Setting
 	        uint32_t multDepth = 110;
         	uint32_t scaleModSize = 50;
