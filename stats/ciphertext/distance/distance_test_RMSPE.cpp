@@ -104,7 +104,7 @@ int main() {
 
 Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > >
 sqrt(Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<unsigned int> > > > ctxs, CryptoContext<DCRTPoly> cc) {
-        ctxs = cc -> EvalMult(ctxs, 0.001);
+        ctxs = cc -> EvalMult(ctxs, 0.01);
 	auto a = ctxs;
         auto b = cc->EvalSub(ctxs, 1.0);
 
@@ -117,7 +117,7 @@ sqrt(Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<uns
                 b = cc -> EvalMult(b_square, b_quater); // b = (b**2)*((b-3)/4)
         }
 
-	float constant = sqrt(1000);
+	float constant = sqrt(100);
 
 	a = cc -> EvalMult(a, constant);
 
