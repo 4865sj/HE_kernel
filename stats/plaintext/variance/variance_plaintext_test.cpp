@@ -44,12 +44,8 @@ int main() {
 			//Calculate mean vector
 			system_clock::time_point start_time_eval = system_clock::now();
 
-			std::vector<double> mean;
-
-			for (int i = 0; i < d; i++) {
-				mean.push_back(0.0);
-			}
-
+			std::vector<double> mean(d, 0.);
+			
 			for (int i = 0; i < d; i++) {
 				double tmp = 0.0;
 				for (int j = 0; j < n; j++) {
