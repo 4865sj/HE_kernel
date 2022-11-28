@@ -218,7 +218,7 @@ int main() {
 		cout << "B complete" << endl;
 
 		//Calculate dominant eignevector of (B_inverse)*(A)
-                for (int i = 0; i < n; i++) {
+                for (int i = 0; i < d; i++) {
                         B[i] = cc -> EvalAdd(B[i], epsilon[i]);
                 } //Since B is singular, we need to add epsilon
 
