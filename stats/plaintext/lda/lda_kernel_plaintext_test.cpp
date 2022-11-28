@@ -25,7 +25,7 @@ int main() {
 
 	std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<> dist(10, 20); //Random distribution
+        std::uniform_real_distribution<> dist(0.3, 0.7); //Random distribution
 
         int trials = 20000;
 
