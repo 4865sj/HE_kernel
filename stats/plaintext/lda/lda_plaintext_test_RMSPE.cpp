@@ -18,7 +18,7 @@ int main() {
         int c = 3; //The number of classes
         std::vector<int> classes = {3, 3, 4}; //The number of data per class; In this case, The number of data in first class is 3
 
-	for (int d = 4; d < 16; d++) { //Dimension
+	for (int d = 5; d < 16; d++) { //Dimension
 
 		std::vector<double> result;
                 cout << "d: " << d << " starts" << endl;
@@ -27,11 +27,11 @@ int main() {
 
                 for (int z = 0; z < n; z++) {
 			std::vector<double> x;
-			double data = (double)z;
+			double data = (double)z/10.;
 			int count = 0;
 			while (count < d) {
 				x.push_back(data);
-				data += 1;
+				data += 0.1;
 				count += 1;
 			}
 			dataset_original[z] = x;
