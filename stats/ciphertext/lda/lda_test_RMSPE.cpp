@@ -78,11 +78,11 @@ int main() {
 
                	for (int z = 0; z < n; z++) {
 			std::vector<double> x;
-			double data = (double)z;
+			double data = (double)z/10.;
 			int count = 0;
 			while (count < d) {
 				x.push_back(data);
-				data += 1;
+				data += 0.1;
 				count += 1;
 			}
 			dataset_original[z] = x;
