@@ -46,20 +46,20 @@ int main() {
 
 			std::vector<double> mean(d, 0.);
 			
-			for (int i = 0; i < d; i++) {
+			for (int i = 0; i < d; i++) { //select ith element of vectors
 				double tmp = 0.0;
 				for (int j = 0; j < n; j++) {
 					tmp += dataset[j][i];
-				}
-				mean[i] = tmp/(double)n;
+				} //Summation of all ith elements
+				mean[i] = tmp/(double)n; //Update ith element of mean vector
 			}
 
 			//Calculate variance
 	
 			double variance_square = 0.0;
 	
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < d; j++) {
+			for (int i = 0; i < n; i++) { //Select data
+				for (int j = 0; j < d; j++) { //Select jth element of vectors
 					variance_square += pow(mean[j] - dataset[i][j], 2);
 				}
 			}
