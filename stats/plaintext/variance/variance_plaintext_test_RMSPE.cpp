@@ -50,7 +50,7 @@ int main() {
 	
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < d; j++) {
-					variance_square += pow(mean[j] - dataset[i][j], 2);
+					variance_square += (mean[j] - dataset[i][j])*(mean[j] - dataset[i][j]);
 				}
 			}
 
