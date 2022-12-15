@@ -26,7 +26,10 @@ int main() {
         cc -> Enable(PKE);
         cc -> Enable(KEYSWITCH);
         cc -> Enable(LEVELEDSHE);
+	
         std::cout << "CKKS scheme is using ring dimension " << cc -> GetRingDimension() <<std::endl << std::endl;
+        std::cout << "CKKS scheme is using scaling mod size " << parameters.GetScalingModSize() <<std::endl << std::endl;
+        std::cout << "CKKS scheme is using security level " << parameters.GetSecurityLevel() <<std::endl << std::endl;
 
         auto keys = cc -> KeyGen();
 
