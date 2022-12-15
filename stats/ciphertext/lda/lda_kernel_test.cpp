@@ -47,7 +47,7 @@ int main() {
         uint32_t batchSize = 64;
         int n = 10; //The number of data
         int c = 3; //The number of classes
-        std::vector<int> classes = {3, 3, 4}; //The number of data per class; In this case, The number of data in first class is 2
+        std::vector<int> classes = {3, 3, 4}; //The number of data per class; In this case, The number of data in first class is 3
 
         CCParams<CryptoContextCKKSRNS> parameters;
         parameters.SetMultiplicativeDepth(multDepth);
