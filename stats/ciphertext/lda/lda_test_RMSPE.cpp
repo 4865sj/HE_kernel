@@ -39,28 +39,35 @@ inverse(Ciphertext<lbcrypto::DCRTPolyImpl<bigintdyn::mubintvec<bigintdyn::ubint<
 int main() {
 	ofstream fout;
 	fout.open("lda.txt");
+	
+        // Setting
+        uint32_t multDepth = 65;
+        uint32_t scaleModSize = 50;
+        uint32_t batchSize = 64;
+        int n = 10; //The number of data
+        int c = 3; //The number of classes
+        std::vector<int> classes = {3, 3, 4}; //The number of data per class; In this case, The number of data in first class is 3
 
+        CCParams<CryptoContextCKKSRNS> parameters;
+        parameters.SetMultiplicativeDepth(multDepth);
+        parameters.SetScalingModSize(scaleModSize);
+        parameters.SetBatchSize(batchSize);
+
+        CryptoContext<DCRTPoly> cc = GenCryptoContext(parameters);
+
+        cc -> Enable(PKE);
+        cc -> Enable(KEYSWITCH);
+        cc -> Enable(LEVELEDSHE);
+
+
+        std::cout << "CKKS scheme is using ring dimension " << cc -> GetRingDimension() <<std::endl << std::endl;
+        std::cout << "CKKS scheme is using scaling mod size " << parameters.GetScalingModSize() <<std::endl << std::endl;
+        std::cout << "CKKS scheme is using security level " << parameters.GetSecurityLevel() <<std::endl << std::endl;
+	
 	for (int d = 5; d < 16; d++) {
 		cout << "d: " << d << " starts" << endl;
 	        // Setting
-        	uint32_t multDepth = 65;
-	        uint32_t scaleModSize = 50;
-        	uint32_t batchSize = 64;
-		int n = 10; //The number of data
-		int c = 3; //The number of classes
 		int nd = max(n, d);
-		std::vector<int> classes = {3, 3, 4}; //The number of data per class; In this case, The number of data in first class is 2
-	        
-		CCParams<CryptoContextCKKSRNS> parameters;
-        	parameters.SetMultiplicativeDepth(multDepth);
-	        parameters.SetScalingModSize(scaleModSize);
-        	parameters.SetBatchSize(batchSize);
-
-	        CryptoContext<DCRTPoly> cc = GenCryptoContext(parameters);
-
-        	cc -> Enable(PKE);
-	        cc -> Enable(KEYSWITCH);
-        	cc -> Enable(LEVELEDSHE);
 
 		auto keys = cc -> KeyGen();
 
