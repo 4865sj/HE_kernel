@@ -1,4 +1,4 @@
-Note)version 2's kernel's elements are packed in the first element of a ciphertext, but version 3's kernel's elememts are packed in the coordinate of a ciphertext coresponding to kernel's index. </br>
+Note)version 2's kernel's elements are packed in the first element of a ciphertext, but version 3's kernel's elememts are packed in the coordinate of a ciphertext corresponding to kernel's index. </br>
 For example, in version 3, k-th kernel's elements are packed in k-th element of a ciphertext. </br>
 </br>
 For d = 1, </br>
